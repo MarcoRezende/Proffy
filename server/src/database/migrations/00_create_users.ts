@@ -1,3 +1,5 @@
+// * os arquivos são executados alfabeticamente ("00_", "01_")
+
 // criado manualmete.
 
 import Knex from 'knex';

@@ -1,11 +1,13 @@
 // miniframework responsval por configurar e inicializar
 // necessidades de um servidor.
 import express from 'express';
+import routes from './routes';
 
 const app = express();
 
 // coversão de requisições para o formato json
 app.use(express.json());
+app.use(routes);
 
 // app.delete('/users:id', (request, response) => {
 //     // Corpo: dados para criação ou atualização de
@@ -28,11 +30,7 @@ app.use(express.json());
 //     return response.json(users);
 // });
 
-// 'get' é um dos metodos presentes ao realizar requisições,
-// tal como 'post' ou 'delete';
-app.get('/', (request, response) => {
-    return response.json({message: "Hello World"})
-})
+
 
 // definindo porta como 3333. Por padrão,
 // a porta é 80. Ex.: localhost:3333/users
