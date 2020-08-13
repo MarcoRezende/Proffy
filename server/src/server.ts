@@ -2,9 +2,11 @@
 // necessidades de um servidor.
 import express from 'express';
 import routes from './routes';
+import cors from 'cors';
 
 const app = express();
 
+app.use(cors());
 // coversão de requisições para o formato json
 app.use(express.json());
 app.use(routes);
@@ -29,7 +31,6 @@ app.use(routes);
 
 //     return response.json(users);
 // });
-
 
 
 // definindo porta como 3333. Por padrão,

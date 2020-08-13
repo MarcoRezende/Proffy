@@ -17,7 +17,7 @@ export async function up(knex: Knex) {
         // notNullable: Campo "obrigatório", não pode ficar vazio,
         // pois é essencial para o funcionamento da aplicação.
         table.string('avatar').notNullable();
-        table.string('whataspp').notNullable();
+        table.string('whatsapp').notNullable();
         table.string('bio').notNullable();
     })
 }

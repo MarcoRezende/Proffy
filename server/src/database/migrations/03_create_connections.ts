@@ -17,10 +17,10 @@ export async function up(knex: Knex) {
 
         // quando esta conexão foi estabelecida
         table.timestamp('created_at')
-          // esta funcção obtem o horario atual
+          // esta função obtem o horario atual
           // que o registro esta sendo criado e salva
           // no campo "created_at"
-          .defaultTo('now()')
+          .defaultTo(knex.raw('CURRENT_TIMESTAMP'))
           .notNullable()
     })
 }

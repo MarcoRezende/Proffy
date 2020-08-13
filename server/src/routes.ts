@@ -1,15 +1,18 @@
 import express from 'express';
 
+import ClassesController from './controllers/ClassesController'
+import ConnectionsController from './controllers/ConnectionsController'
+
 const routes = express.Router();
+const classesController = new ClassesController();
+const connectionsController = new ConnectionsController();
 
 // 'post' é um dos metodos presentes ao realizar requisições,
 // tal como 'get' ou 'delete';
-routes.post('/classes', (request, response) => {
-    const data = request.body;
+routes.post('/classes', classesController.create);
+routes.get('/classes', classesController.index);
 
-    console.log(data);
-
-    return response.send();
-})
+routes.post('/connections', connectionsController.create);
+routes.get('/connections', connectionsController.index);
 
 export default routes
