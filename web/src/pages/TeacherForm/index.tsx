@@ -6,7 +6,9 @@ import './styles.css';
 
 function TeacherForm() {
     return (
-        <PageHeader title="Estes são os Proffys disponíveis."/>
+        <div id="page-teacher-form" className="container">
+          <PageHeader title="Estes são os Proffys disponíveis."/>
+        </div>
     )
 }
 
