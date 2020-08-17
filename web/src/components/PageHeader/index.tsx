@@ -10,6 +10,7 @@ interface PageHeaderProps {
     // se fosse "title?: string", significaria que não
     // é um valor obrigatório de se receber;
     title: string;
+    description?: string;
 }
 
 // "FunctionComponent" pode ser abreviado para "FC"
@@ -25,6 +26,10 @@ const PageHeader: React.FunctionComponent<PageHeaderProps> = (props) => {
 
             <div className="header-content">
                 <strong>{props.title}</strong>
+                {/* a segunda parte do codigo só é executada se a */}
+                {/* primeira for verdadeira */}
+                { props.description && <p> {props.description} </p> }
+
                 {props.children}
             </div>
         </header>
