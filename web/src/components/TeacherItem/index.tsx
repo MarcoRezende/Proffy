@@ -2,36 +2,56 @@ import React from 'react';
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 
+import api from '../../services/api'
+
 import './styles.css';
 
-function TeacherItem() {
+export interface Teacher {
+    id: number;
+    name: string;
+    avatar: string;
+    subject: string;
+    bio: string;
+    cost: number;
+    whatsapp: string;
+}
+
+interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+    function createNewConnection() {
+        api.post('connections', {
+            user_id: teacher.id
+        })
+    }
+
     return (
         <article className="teacher-item">
             <header>
-                <img src="https://vignette.wikia.nocookie.net/tictactoe2/images/d/d1/Ginavalentina_2015_f_ginavalentina.jpg/revision/latest/top-crop/width/360/height/450?cb=20190606212317&path-prefix=de" alt="Professor"/>
+                <img src={teacher.avatar} alt="Professor"/>
                 <div>
-                    <strong>Jessica Almeida</strong>
-                    <span>Ciência</span>
+                    <strong>{teacher.name}</strong>
+                    <span>{teacher.subject}</span>
                 </div>
             </header>
 
-            <p>
-            Entusiasta das melhores tecnologias de ciência avançada.
-
-            <br /><br />
-
-            Apoixonada por fazer novas descobertas e por mudar a vida das pessoas através de experiências
-            </p>
+            <p>{teacher.bio}</p>
 
             <footer>
                 <p>
                     Preço/Hora
-                    <strong>R$ 80,00</strong>
+                    <strong>R$ {teacher.cost},00</strong>
                 </p>
-                <button type="button">
+                <a
+                    target='_blank'
+                    onClick={createNewConnection}
+                    href={`https://wa.me/${teacher.whatsapp}`}
+                >
                     <img src={whatsappIcon} alt="Whatsapp"/>
                     Entrar em Contato
-                </button>
+                </a>
             </footer>
         </article>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 
 import { Link } from 'react-router-dom'
 
@@ -9,9 +9,31 @@ import studyIcon from '../../assets/images/icons/study.svg';
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 
+import api from '../../services/api';
+
 import './styles.css'
 
 function Landing() {
+    // poderiamos setar o valor para o presente no server, mas como
+    // leva um tempo para acessa-lo e obte-lo, passmos um valor
+    // padrão, nesta caso, 0.
+    const [totalConnections, setTotalConnections] = useState(0);
+
+    // esta função recebe dois parametros: uma função e um array
+    // variaveis. A função passada como parametro será executado somente
+    // quando a variavel dentro do array mudar. Caso o array esteja
+    // vazio, a função será executada apenas quando o componente
+    // é exibido em tela.
+    useEffect(() => {
+        // passmos a rota pois a base url ja foi configurada.
+      api.get('connections').then(response => {
+          // usando desestruturação para a propriedade 'total'
+          const { total } = response.data
+
+          setTotalConnections(total)
+      })
+    }, [])
+
     return (
         <div id="page-landing">
             <div id="page-landing-content" className="container">
@@ -39,7 +61,7 @@ function Landing() {
                 </div>
 
                 <span className="total-connections">
-                    Total de 200 conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo" />
+                    Total de { totalConnections } conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo" />
                 </span>
             </div>
         </div>
