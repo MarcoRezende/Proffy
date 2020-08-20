@@ -17,7 +17,7 @@ function GiveClasses() {
   }
 
   return (
-    // giveClassesBgImage precisa de um tamanho definido
+    // ImageBackground precisa de um tamanho definido
     // para funcionar correntamente.
     <View style={styles.container}>
       <ImageBackground
