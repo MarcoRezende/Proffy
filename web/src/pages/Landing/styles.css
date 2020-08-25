@@ -4,10 +4,54 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    /*align-items: center;*/
 
     color: var(--color-text-in-primary);
+}
+
+#page-landing-content {
+    width: 100%;
+    max-width: initial;
+}
+
+.page-landing-hero {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1.6rem 2.4rem;
     background: var(--color-primary);
+}
+
+.page-landing-hero,
+.welcome-container {
+    padding: 1.6rem 10%;
+}
+
+.page-landing-hero-inner {
+    margin: 3.2rem 0;
+}
+
+.profile-menu-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.6rem;
+}
+
+.profile-menu-container img {
+    height: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.profile-menu-container h2 {
+    font: normal 1.6rem Archivo;
+    flex: 1;
+    margin-left: 1.6rem;
 }
 
 .logo-container img {
@@ -16,9 +60,11 @@
 
 .hero-image {
     width: 100%;
+    height: 100%;
 }
 
 .logo-container {
+    display: none;
     text-align: center;
     margin-bottom: 3.2rem;
 }
@@ -30,22 +76,45 @@
     margin-top: 0.8rem;
 }
 
-.buttons-container {
+.welcome-container {
+    width: 90vw;
     display: flex;
     justify-content: center;
-    margin: 3.2rem 0;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.welcome-container h2 {
+    font: normal 2.6rem Poppins;
+    margin-top: 3.2rem;
+    width: 100%;
+    color: var(--color-text-title);
+}
+
+.welcome-container h2 p {
+    font-weight: 700;
+}
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    margin: 2.4rem 0;
 }
 
 .buttons-container a {
-    width: 30rem;
-    height: 10.4rem;
+    width: 48%;
+    height: 18rem;
+    max-width: 20rem;
     border-radius: 0.8rem;
-    margin-right: 1.6rem;
+    padding: 0 2.6rem;
     font: 700 2.0rem Archivo;
 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    flex-direction: column;
 
     text-decoration: none;
     color: var(--color-button-text);
@@ -59,7 +128,7 @@
 
 .buttons-container a img {
     width: 4rem;
-    margin-right: 2.4rem;
+    margin-bottom: 4.4rem;
 }
 
 .buttons-container a.study {
@@ -79,40 +148,20 @@
 }
 
 .total-connections {
+    display: inline-block;
     font-size: 1.4rem;
-
-    display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--color-text-base);
+    margin: 1.6rem 0;
 }
 
 .total-connections img {
     margin-left: 0.8rem;
+    vertical-align: middle;
 }
 
 @media (min-width: 1100px) {
-    #page-landing-content {
-        max-width: 1110px;
-
-        display: grid;
-        grid-template-rows: 350px 1fr;
-        grid-template-columns: 2fr 1fr 1fr;
-        /* hero vai ocupar 50% (1fr + 1fr dos 4fr totais) e
-        ## buttons 75% (2fr + 1fr dos 4frs totais)*/
-        grid-template-areas:
-            "logo hero hero"
-            "buttons buttons total"
-        ;
-    }
-
-    .logo-container {
-        text-align: left;
-        grid-area: logo;
-        /* verticalmente no centro */
-        align-self: center;
-        margin: 0;
-    }
-
     .logo-container h2 {
         text-align: initial;
         font-size: 3.6rem;
@@ -122,24 +171,100 @@
         height: 100%;
     }
 
-    .hero-image {
-        grid-area: hero;
-        /* imagem "esticada" até o fim do container pai.*/
-        justify-self: end;
-    }
-
-    .buttons-container {
-        grid-area: buttons;
-        /* será exibido a partir do começo do container pai.*/
-        justify-content: flex-start;
-    }
-
     .buttons-container a {
         font-size: 2.4rem;
         justify-self: end;
     }
+}
+
+@media (min-width: 1080px) {
+    #page-landing-content {
+        width: 100%;
+        max-width: initial;
+        display: grid;
+        grid-template-rows: 70vh 1fr;
+        grid-column-gap: 1.6rem;
+    }
+
+    .page-landing-hero {
+        justify-content: initial;
+    }
+
+    .page-landing-hero-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "logo hero";
+        margin: 6rem 0;
+        align-self: stretch;
+        height: 100%;
+        grid-column-gap: 20px;
+    }
+
+    .profile-menu-container {
+        grid-area: menu;
+    }
+
+    .logo-container {
+        display: initial;
+        text-align: left;
+        grid-area: logo;
+        /* verticalmente no centro */
+        align-self: center;
+        margin: 0;
+    }
+
+    .logo-container img {
+        max-width: 100%;
+    }
+
+    .hero-image {
+        grid-area: hero;
+        /* imagem "esticada" até o fim do container pai.*/
+        justify-self: end;
+        width: initial;
+        max-width: 100%;
+    }
+
+    .welcome-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        margin-top: 3.2rem;
+        grid-template-areas:
+            "welcome connections buttons";
+        grid-column-gap: 2.4rem;
+    }
+
+    .welcome-container h2 {
+        grid-area: welcome;
+        margin: 0;
+        font-size: 2.3rem;
+        /* será exibido a partir do começo do container pai.*/
+        justify-content: flex-start;
+    }
+
+    .buttons-container {
+        grid-area: buttons;
+        margin: 0;
+    }
+
+    .buttons-container a {
+        flex-direction: row;
+        height: initial;
+        font-size: 2.2rem;
+        align-items: center;
+        padding: 1.6rem 3.2rem;
+    }
+
+    .buttons-container a img {
+        margin: 0 1.6rem 0 0;
+    }
 
     .total-connections {
-        grid-area: total;
+        grid-area: connections;
+        justify-self: end;
+        width: 170px;
+        font-size: 1.4rem;
     }
 }

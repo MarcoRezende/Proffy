@@ -37,32 +37,51 @@ function Landing() {
     return (
         <div id="page-landing">
             <div id="page-landing-content" className="container">
-                <div className="logo-container">
-                    <img src={logoImg} alt="Proffy" />
-                    <h2>sua plataforma de estudos online.</h2>
+
+                <div className="page-landing-hero">
+                    <div className="profile-menu-container">
+                        <img src="https://www.famousbirthdays.com/headshots/angelskimi-1.jpg" alt="Proffy" />
+                        <h2>Angels Kimi</h2>
+                        <span>Sair</span>
+                    </div>
+
+                    <div className="page-landing-hero-inner">
+                        <div className="logo-container">
+                            <img src={logoImg} alt="Proffy" />
+                            <h2>sua plataforma de estudos online.</h2>
+                        </div>
+
+                        <img
+                            src={landingImg}
+                            alt="Plataforma de estudos"
+                            className="hero-image"
+                        />
+                    </div>
+
                 </div>
 
-                <img
-                    src={landingImg}
-                    alt="Plataforma de estudos"
-                    className="hero-image"
-                />
+                <div className="welcome-container">
+                    <h2>
+                        Seja bem-vindo.<br />
+                        <p>O que deseja fazer?</p>
+                    </h2>
 
-                <div className="buttons-container">
-                    <Link to="/study" className="study">
-                        <img src={studyIcon} alt="Estudar" />
-                        Estudar
-                    </Link>
+                    <div className="buttons-container">
+                        <Link to="/study" className="study">
+                            <img src={studyIcon} alt="Estudar" />
+                            Estudar
+                        </Link>
 
-                    <Link to="/give-classes" className="give-classes">
-                        <img src={giveClassesIcon} alt="Dar aulas" />
-                        Dar aulas
-                    </Link>
+                        <Link to="/give-classes" className="give-classes">
+                            <img src={giveClassesIcon} alt="Dar aulas" />
+                            Dar aulas
+                        </Link>
+                    </div>
+
+                    <span className="total-connections">
+                        Total de { totalConnections } conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo" />
+                    </span>
                 </div>
-
-                <span className="total-connections">
-                    Total de { totalConnections } conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo" />
-                </span>
             </div>
         </div>
     )
