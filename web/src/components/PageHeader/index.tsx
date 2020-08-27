@@ -11,6 +11,7 @@ interface PageHeaderProps {
     // é um valor obrigatório de se receber;
     title: string;
     description?: string;
+    section: string;
 }
 
 // "FunctionComponent" pode ser abreviado para "FC"
@@ -21,6 +22,7 @@ const PageHeader: React.FunctionComponent<PageHeaderProps> = (props) => {
                 <Link to="/">
                     <img src={backIcon} alt="Voltar"/>
                 </Link>
+                <span>{props.section}</span>
                 <img src={LogoImg} alt="Proffy"/>
             </div>
 

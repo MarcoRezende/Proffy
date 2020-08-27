@@ -12,14 +12,14 @@
 }
 
 .page-header .top-bar-container {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
-    /* itens um do lado do outro */
     justify-content: space-between;
     align-items: center;
     color: var(--color-text-in-primary);
-    padding: 1.6rem 0;
+    padding: 1.6rem;
+    background-color: var(--color-primary-darker);
 }
 
 .page-header .top-bar-container a {

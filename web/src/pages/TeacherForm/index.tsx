@@ -82,8 +82,9 @@ function TeacherForm() {
     return (
         <div id="page-teacher-form" className="container">
           <PageHeader
-            title="Estes são os Proffys disponíveis."
+            title="Que incrível que você quer dar auals."
             description="O primeiro passo é preencher esse formulário de inscrição."
+            section="Dar Aulas"
           />
 
           <main>
@@ -91,24 +92,22 @@ function TeacherForm() {
               <fieldset>
                   <legend>Seus Dados</legend>
 
-                  <Input
-                    name="name"
-                    label="Nome Completo"
-                    value={name}
-                    onChange={(e) => { setName(e.target.value) }}
-                  />
-                  <Input
-                    name="avatar"
-                    label="Avatar"
-                    value={avatar}
-                    onChange={(e) => { setAvatar(e.target.value) }}
-                  />
-                  <Input
-                    name="whatsapp"
-                    label="WhatsApp"
-                    value={whatsapp}
-                    onChange={(e) => { setWhatsapp(e.target.value) }}
-                  />
+                  <div className="user-info">
+                    <img className="avatar" src="https://www.famousbirthdays.com/headshots/angelskimi-1.jpg"/>
+
+                    <div className="name-and-subject">
+                      <span id="name">Angels Kimi</span>
+                      <span id="subject">Geográfia</span>
+                    </div>
+
+                    <Input
+                      name="whatsapp"
+                      label="WhatsApp"
+                      value={whatsapp}
+                      onChange={(e) => { setWhatsapp(e.target.value) }}
+                    />
+                  </div>
+
                   <Textarea
                     name="bio"
                     label="Biografia"
