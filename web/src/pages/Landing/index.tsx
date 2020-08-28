@@ -8,6 +8,7 @@ import landingImg from '../../assets/images/landing.svg';
 import studyIcon from '../../assets/images/icons/study.svg';
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
+import { ReactComponent as LogoutIcon } from '../../assets/images/icons/off.svg';
 
 import api from '../../services/api';
 
@@ -42,7 +43,7 @@ function Landing() {
                     <div className="profile-menu-container">
                         <img src="https://www.famousbirthdays.com/headshots/angelskimi-1.jpg" alt="Proffy" />
                         <h2>Angels Kimi</h2>
-                        <span>Sair</span>
+                        <LogoutIcon/>
                     </div>
 
                     <div className="page-landing-hero-inner">

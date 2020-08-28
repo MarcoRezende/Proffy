@@ -54,6 +54,18 @@
     margin-left: 1.6rem;
 }
 
+.profile-menu-container svg {
+    width: 35px;
+    background: var(--color-primary-dark);
+    padding: 10px;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+.profile-menu-container svg path {
+    fill: var(--color-text-in-primary) !important;
+}
+
 .logo-container img {
     height: 10rem;
 }

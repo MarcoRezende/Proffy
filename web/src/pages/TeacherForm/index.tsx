@@ -9,6 +9,7 @@ import Select from '../../components/Select/';
 import api from '../../services/api'
 
 import warningIcon from '../../assets/images/icons/warning.svg'
+import rocketIcon from '../../assets/images/icons/rocket.svg'
 
 import './styles.css';
 
@@ -30,6 +31,11 @@ function TeacherForm() {
     const [scheduleItems, setScheduleItems] = useState([
           { week_day: 0, from: '', to: '' }
         ])
+
+    const headerMessage = {
+      text: ["Prepara-se!", "Vai ser o máximo"],
+      img: rocketIcon
+    }
 
     function addNewScheduleItem() {
       // para modificar e incluir, primeiro passamos os items do nosso array
@@ -85,11 +91,12 @@ function TeacherForm() {
             title="Que incrível que você quer dar auals."
             description="O primeiro passo é preencher esse formulário de inscrição."
             section="Dar Aulas"
+            extra={headerMessage}
           />
 
           <main>
             <form onSubmit={handleCreateClass}>
-              <fieldset>
+              <div className="fieldset">
                   <legend>Seus Dados</legend>
 
                   <div className="user-info">
@@ -100,13 +107,14 @@ function TeacherForm() {
                       <span id="subject">Geográfia</span>
                     </div>
 
-                    <Input
-                      name="whatsapp"
-                      label="WhatsApp"
-                      value={whatsapp}
-                      onChange={(e) => { setWhatsapp(e.target.value) }}
-                    />
                   </div>
+
+                  <Input
+                    name="whatsapp"
+                    label="WhatsApp"
+                    value={whatsapp}
+                    onChange={(e) => { setWhatsapp(e.target.value) }}
+                  />
 
                   <Textarea
                     name="bio"
@@ -114,9 +122,9 @@ function TeacherForm() {
                     value={bio}
                     onChange={(e) => { setBio(e.target.value) }}
                   />
-              </fieldset>
+              </div>
 
-              <fieldset>
+              <div className="fieldset">
                   <legend>Sobre a Aula</legend>
 
                   <Select
@@ -144,9 +152,9 @@ function TeacherForm() {
                     value={cost}
                     onChange={(e) => { setCost(e.target.value) }}
                   />
-              </fieldset>
+              </div>
 
-              <fieldset>
+              <div className="fieldset">
                   <legend>
                     Horários Disponíveis
                     <button type="button" onClick={addNewScheduleItem}>
@@ -190,7 +198,7 @@ function TeacherForm() {
                     )
                   })}
 
-              </fieldset>
+              </div>
 
               <footer>
                 <p>

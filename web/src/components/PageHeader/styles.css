@@ -18,8 +18,8 @@
     justify-content: space-between;
     align-items: center;
     color: var(--color-text-in-primary);
-    padding: 1.6rem;
-    background-color: var(--color-primary-darker);
+    padding: 1.6rem 10%;
+    background-color: var(--color-primary-dark);
 }
 
 .page-header .top-bar-container a {

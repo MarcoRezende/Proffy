@@ -12,6 +12,10 @@ interface PageHeaderProps {
     title: string;
     description?: string;
     section: string;
+    extra?: {
+        text: Array<string>;
+        img: string;
+    }
 }
 
 // "FunctionComponent" pode ser abreviado para "FC"
@@ -27,10 +31,24 @@ const PageHeader: React.FunctionComponent<PageHeaderProps> = (props) => {
             </div>
 
             <div className="header-content">
-                <strong>{props.title}</strong>
-                {/* a segunda parte do codigo só é executada se a */}
-                {/* primeira for verdadeira */}
-                { props.description && <p> {props.description} </p> }
+                <div className="header-inner">
+                    <div>
+                        <strong>{props.title}</strong>
+                        {/* a segunda parte do codigo só é executada se a */}
+                        {/* primeira for verdadeira */}
+                        { props.description && <p> {props.description} </p> }
+                    </div>
+                    { props.extra &&
+                        <div style={props.description ? {alignSelf:"flex-end"} : {alignSelf: "initial"}}>
+                            <img src={props.extra.img} alt=""/>
+                            <div className="header-message">
+                                {props.extra.text.map(message => {
+                                    return <p>{message}</p>
+                                })}
+                            </div>
+                        </div>
+                    }
+                </div>
 
                 {props.children}
             </div>

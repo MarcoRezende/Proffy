@@ -7,6 +7,25 @@
     margin-bottom: 6.4rem;
 }
 
+#page-teacher-form .page-header .header-content .header-inner {
+    display: flex;
+}
+
+#page-teacher-form .page-header .header-content .header-inner > div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 220px;
+}
+
+#page-teacher-form .page-header .header-content .header-inner > div:nth-child(2) img {
+    margin-right: 1.6rem;
+}
+
+#page-teacher-form .page-header .header-content .header-inner > div:nth-child(2) p {
+    margin: 0 !important;
+}
+
 #page-teacher-form main {
     background: var(--color-box-base);
     width: 92%;
@@ -17,16 +36,16 @@
     overflow: hidden;
 }
 
-#page-teacher-form main fieldset {
+#page-teacher-form main .fieldset {
     border: 0;
     padding: 0 2.4rem;
 }
 
-#page-teacher-form main fieldset + fieldset {
+#page-teacher-form main .fieldset + .fieldset {
     margin-top: 6.4rem;
 }
 
-#page-teacher-form main fieldset legend {
+#page-teacher-form main .fieldset legend {
     font: 700 2.4rem Archivo;
     color: var(--color-text-title);
     margin-bottom: 2.4rem;
@@ -38,44 +57,37 @@
     border-bottom: 1px solid var(--color-line-in-white);
 }
 
-#page-teacher-form main fieldset .user-info {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    grid-template-rows: 60px 1fr;
-    grid-template-areas:
-        "avatar info"
-        "whatsapp whatsapp";
-    grid-gap: 1.6rem;
+#page-teacher-form main .fieldset .user-info {
+    display: flex;
+    align-items: center;
 }
 
-#page-teacher-form main fieldset .user-info .avatar {
-    width: 100%;
-    height: 100%;
+#page-teacher-form main .fieldset .user-info .avatar {
+    width: 60px;
+    height: 60px;
+    margin-right: 1.6rem;
     border-radius: 50%;
-    grid-area: avatar;
 }
 
-#page-teacher-form main fieldset .user-info .name-and-subject {
-    grid-area: info;
+#page-teacher-form main .fieldset .user-info .name-and-subject {
     display: flex;
     flex-direction: column;
     justify-content: center;
     font: 700 1.8rem Archivo;
 }
 
-#page-teacher-form main fieldset .user-info #name {
+#page-teacher-form main .fieldset .user-info #name {
 }
 
-#page-teacher-form main fieldset .user-info #subject {
+#page-teacher-form main .fieldset .user-info #subject {
     font-size: 1.4rem;
     font-weight: normal;
 }
 
-#page-teacher-form main fieldset .user-info .input-block {
-    grid-area: whatsapp;
+#page-teacher-form main .fieldset .user-info .input-block {
 }
 
-#page-teacher-form main fieldset legend button {
+#page-teacher-form main .fieldset legend button {
     background: none;
     border: 0;
     color: var(--color-primary);
@@ -84,13 +96,13 @@
     transition: color .2s
 }
 
-#page-teacher-form main fieldset legend button:hover {
+#page-teacher-form main .fieldset legend button:hover {
     color: var(--color-primary-dark);
 }
 
-#page-teacher-form main fieldset .user-info + .textarea-block,
-#page-teacher-form main fieldset .input-block + .textarea-block,
-#page-teacher-form main fieldset .select-block + .input-block {
+#page-teacher-form main .fieldset .user-info + .input-block,
+#page-teacher-form main .fieldset .input-block + .textarea-block,
+#page-teacher-form main .fieldset .select-block + .input-block {
     margin-top: 2.4rem;
 }
 
@@ -146,11 +158,32 @@
     }
 
     #page-teacher-form .page-header .header-content {
+        padding: 0;
+    }
+
+    #page-teacher-form main .fieldset {
         padding: 0 6.4rem;
     }
 
-    #page-teacher-form main fieldset {
-        padding: 0 6.4rem;
+    #page-teacher-form main form .fieldset:first-child {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #page-teacher-form main form .fieldset:first-child legend {
+        flex: 100%;
+    }
+
+    #page-teacher-form main form .fieldset:first-child .user-info {
+        flex: 50%;
+    }
+
+    #page-teacher-form main form .fieldset:first-child .input-block {
+        flex: 50%;
+    }
+
+    #page-teacher-form main form .fieldset:first-child .textarea-block {
+        flex: 100%;
     }
 
     #page-teacher-form main .schedule-item {
@@ -159,6 +192,7 @@
         column-gap: 1.6rem;
     }
 
+    #page-teacher-form main .fieldset .user-info + .input-block,
     #page-teacher-form main .schedule-item .input-block {
         margin-top: 0 !important;
     }
