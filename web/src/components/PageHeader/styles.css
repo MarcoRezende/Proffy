@@ -55,6 +55,25 @@
     margin-top: 2.4rem;
 }
 
+.page-header .header-content .header-inner {
+    display: flex;
+}
+
+.page-header .header-content .header-inner > div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 220px;
+}
+
+.page-header .header-content .header-inner > div:nth-child(2) img {
+    margin-right: 1.6rem;
+}
+
+.page-header .header-content .header-inner > div:nth-child(2) p {
+    margin: 0 !important;
+}
+
 @media (min-width: 700px) {
     .page-header {
         height: 340px;

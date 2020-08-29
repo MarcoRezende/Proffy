@@ -43,7 +43,7 @@ const PageHeader: React.FunctionComponent<PageHeaderProps> = (props) => {
                             <img src={props.extra.img} alt=""/>
                             <div className="header-message">
                                 {props.extra.text.map(message => {
-                                    return <p>{message}</p>
+                                    return <p key={message}>{message}</p>
                                 })}
                             </div>
                         </div>

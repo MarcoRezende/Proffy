@@ -111,7 +111,7 @@
 .buttons-container {
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin: 2.4rem 0;
 }
 
