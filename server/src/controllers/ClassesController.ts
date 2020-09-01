@@ -12,7 +12,7 @@ interface ScheduleItem {
 }
 
 export default class ClassesController {
-    // quando quremos fazer uma listagem usamos index, por isso
+    // quando queremos fazer uma listagem usamos index, por isso
     // nomeamos este motodo desta forma.
     async index(request: Request, response: Response) {
         const filters = request.query;
@@ -30,6 +30,7 @@ export default class ClassesController {
         }
 
         const timeInMinutes = convertHourToMinutes(time as string);
+
 
         const classes = await db('classes')
           // como arrow function não cria escopo, declaramos a função
@@ -59,9 +60,16 @@ export default class ClassesController {
           // juntamos a tabela users e class onde o 'classes.user_id' e
           // 'users_id' sejam o mesmo.
           .join('users', 'classes.user_id', '=', 'users.id')
-          // quremos selecionar TODOS (*) os dados da tabela
+          // queremos selecionar TODOS (*) os dados da tabela
           // classes e users.
           .select(['classes.*', 'users.*'])
+
+        let classSchedule = await db('class_schedule')
+
+        // não é a forma mais correta, mas está funcionando corretamente
+        classes.map((classItem, index) => {
+            classes[index]['schedule'] = classSchedule.filter(item => item.class_id === classItem.id)
+        })
 
         return response.json(classes);
     }

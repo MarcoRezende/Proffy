@@ -6,8 +6,11 @@ import Input from '../../components/Input/';
 import Select from '../../components/Select/';
 
 import smileFaceIcon from '../../assets/images/icons/smile.svg';
+import {ReactComponent as BackIcon} from '../../assets/images/icons/back.svg';
 
 import api from '../../services/api'
+
+import createSchedule from '../../utils/createSchedule'
 
 import './styles.css';
 
@@ -27,44 +30,32 @@ function TeacherList() {
       img: smileFaceIcon
     }
 
-    const week: Array<{value: string, label: string}> = [
-      { value: '0', label: 'Domingo' },
-      { value: '1', label: 'Segunda' },
-      { value: '2', label: 'Terça' },
-      { value: '3', label: 'Quarta' },
-      { value: '4', label: 'Quinta' },
-      { value: '5', label: 'Sexta' },
-      { value: '6', label: 'Sábado' },
-    ]
-
-    const test: Array<{value: string, to: string, from: string}> = [
-      { value: '1', to: '08h', from: '16h' },
-      { value: '3', to: '08h', from: '16h' },
-      { value: '4', to: '08h', from: '16h' }
-    ]
-
-    const teacherSchedule: Array<{value: string, to: string, from: string}> = [
-      { value: '0', to: '', from: '' },
-      { value: '1', to: '', from: '' },
-      { value: '2', to: '', from: '' },
-      { value: '3', to: '', from: '' },
-      { value: '4', to: '', from: '' },
-      { value: '5', to: '', from: '' },
-      { value: '6', to: '', from: '' }
-    ]
-
-    for (let i = 0; i < test.length; i++) {
-      for (let ind = 0; ind < teacherSchedule.length; ind++) {
-        if (test[i].value === teacherSchedule[ind].value) {
-          teacherSchedule[ind] = test[i];
-        }
+    const test: Array<{id: number, week_day: number, from: number, to: number, class_id: number}> = [
+      {
+        "id": 1,
+        "week_day": 1,
+        "from": 480,
+        "to": 720,
+        "class_id": 1
+      },
+      {
+        "id": 2,
+        "week_day": 3,
+        "from": 600,
+        "to": 1080,
+        "class_id": 1
+      },
+      {
+        "id": 3,
+        "week_day": 4,
+        "from": 480,
+        "to": 720,
+        "class_id": 1
       }
-    }
+    ]
 
     async function searchTeachers(e: FormEvent) {
       e.preventDefault();
-
-      console.log(teacherSchedule)
 
       const response = await api.get('/classes', {
         params: {
@@ -74,6 +65,8 @@ function TeacherList() {
         }
       });
 
+      console.log(response.data)
+      createSchedule(response.data[0].schedule)
       setTeachers(response.data)
     }
 
@@ -144,15 +137,18 @@ function TeacherList() {
                 <p>Apoixonada em experimentar e manipular todos os tipos de formas que o mundo tem a oferecer.</p>
 
                 <ul className="teacher-schedule">
-                  {week.map((day, index) => {
+                  <span><p>Dia</p><p></p><p>Horário</p></span>
+                  {createSchedule(test).map((day, index) => {
                     return(
-                      <li key={`day-${day.value}`}>
+                      <li key={`day-${day.value}`} className={!day.to ? "disabled" : ""}>
                         <p className="schedule-label">Dia</p>
                         <p className="schedule-value">{day.label}</p>
+                        <span><BackIcon/></span>
                         <p className="schedule-label">Horário</p>
-                        <p className="schedule-value">{
-                          teacherSchedule[index].to ?
-                          `${teacherSchedule[index].to} - ${teacherSchedule[index].from}` :
+                        <p className="schedule-value">
+                        {
+                          day.to ?
+                          `${day.to} - ${day.from}` :
                           "-"
                         }
                         </p>
