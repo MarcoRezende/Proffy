@@ -1,0 +1,95 @@
+#sign-up-page {
+
+}
+
+.sign-up-inner {
+}
+
+.sign-up-form {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.sign-up-form p:first-child {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-text-title);
+}
+
+.sign-up-form p:last-child {
+  margin: .8rem 0;
+}
+
+.sign-up-input-block {
+  margin: 1.6rem 0;
+}
+
+.sign-up-input-block input {
+  border: 0;
+  padding: 1.6rem;
+  background: var(--color-input-background);
+}
+
+.sign-up-input-block > input:first-child {
+  border-radius: .8rem .8rem 0 0;
+}
+
+.sign-up-input-block span input {
+  border-radius: 0 0 .8rem .8rem
+}
+
+.sign-up-input-block input:focus {
+  z-index: 999;
+}
+
+.sign-up-input-block input + input,
+.sign-up-input-block input + span.password-input {
+  border-top: 1px solid var(--color-line-in-white)
+}
+
+.sign-up-input-block > span,
+.sign-up-input-block input {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.sign-up-input-block input[name="password"] {
+  padding-right: 50px;
+}
+
+.sign-up-input-block span > .input-icon {
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  right: 0;
+  transform: translateY(50%);
+  bottom: 50%;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.sign-up-input-block span > .input-icon svg {
+  margin: 0 auto;
+  width: 50%;
+  height: 100%;
+  display: block;
+}
+
+.sign-up-form button {
+  width: 100%;
+  background: var(--color-secundary);
+  border: 0;
+  padding: 1.2rem;
+  color: var(--color-button-text);
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.sign-up-form button:hover {
+  background: var(--color-secundary-dark);
+}
+
+.sign-up-hero {
+  display: none;
+}

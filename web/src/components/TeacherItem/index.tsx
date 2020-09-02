@@ -1,10 +1,17 @@
 import React from 'react';
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
+import {ReactComponent as BackIcon} from '../../assets/images/icons/back.svg';
 
 import api from '../../services/api'
 
+import createSchedule, { scheduleInt } from '../../utils/createSchedule'
+
 import './styles.css';
+
+interface Schedule {
+
+}
 
 export interface Teacher {
     id: number;
@@ -14,6 +21,7 @@ export interface Teacher {
     bio: string;
     cost: number;
     whatsapp: string;
+    schedule: Array<scheduleInt>;
 }
 
 interface TeacherItemProps {
@@ -30,33 +38,43 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
     return (
         <article className="teacher-item">
             <header>
-                <img src={teacher.avatar} alt="Professor"/>
-                <div>
-                    <strong>{teacher.name}</strong>
-                    <span>{teacher.subject}</span>
-                </div>
+              <img src={teacher.avatar} alt="Professor"/>
+              <div>
+                <strong>{teacher.name}</strong>
+                <span>{teacher.subject}</span>
+              </div>
             </header>
-
             <p>{teacher.bio}</p>
 
+            <ul className="teacher-schedule">
+              <span><p>Dia</p><p></p><p>Horário</p></span>
+              {createSchedule(teacher.schedule).map(day => {
+                return(
+                  <li key={`day-${day.week_day}`} className={!day.to ? "disabled" : ""}>
+                    <p className="schedule-label">Dia</p>
+                    <p className="schedule-value">{day.label}</p>
+                    <span><BackIcon/></span>
+                    <p className="schedule-label">Horário</p>
+                    <p className="schedule-value">
+                    {
+                      day.to ?
+                      `${day.from} - ${day.to}` :
+                      "-"
+                    }
+                    </p>
+                  </li>
+                )
+              })}
+            </ul>
+
             <footer>
-                <p>
-                    Preço/Hora
-                    <strong>R$ {teacher.cost},00</strong>
-                </p>
-                <a
-                    target='_blank'
-                    rel="noopener noreferrer"
-                    onClick={createNewConnection}
-                    href={`https://wa.me/${teacher.whatsapp}`}
-                >
-                    <img src={whatsappIcon} alt="Whatsapp"/>
-                    Entrar em Contato
-                </a>
+              <p>Preço/Hora<strong>R$ {teacher.cost},00</strong></p>
+              <a target="_blank" rel="noopener noreferrer" href={`https://wa.me/${teacher.whatsapp}`} onClick={createNewConnection}>
+                <img src="/static/media/whatsapp.45c6e6ec.svg" alt="Whatsapp"/>Entrar em Contato
+              </a>
             </footer>
         </article>
-
-        )
+    )
 }
 
 export default TeacherItem;
