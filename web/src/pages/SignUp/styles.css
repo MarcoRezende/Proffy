@@ -2,13 +2,23 @@
 
 }
 
+#sign-up-page,
 .sign-up-inner {
+  height: 100%;
+}
 
+.sign-up-inner .wrapper {
+  display: grid;
+  grid-template-rows: 70px 1fr;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  max-width: 35rem;
+  margin: 0 auto;
 }
 
 .sign-up-form {
-  max-width: 30rem;
-  margin: 0 auto;
+
 }
 
 .sign-up-form p:first-child {
@@ -93,4 +103,59 @@
 
 .sign-up-hero {
   display: none;
+}
+
+@media (min-width: 960px) {
+  #sign-up-page {
+    max-width: initial;
+    width: 100vw;
+  }
+
+  .sign-up-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sign-up-hero {
+    background: var(--color-primary);
+    display: initial;
+    position: relative;
+    width: 100%;
+  }
+
+  .sign-up-hero > div {
+    display: flex;
+    max-width: 32rem;
+    margin: 0 auto;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.6rem;
+  }
+
+  .sign-up-hero > div * {
+    z-index: 999;
+  }
+
+  .sign-up-hero > div img {
+    width: 100%;
+  }
+
+  .sign-up-hero > div p {
+    color: var(--color-text-in-primary);
+    font-size: 2rem;
+  }
+
+  .sign-up-hero::before {
+    content: " ";
+    background: url('../../assets/images/background-primary.svg') no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 90%;
+    width: 90%;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+  }
 }
