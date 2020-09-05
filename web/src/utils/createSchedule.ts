@@ -9,12 +9,6 @@ export interface scheduleInt {
 }
 
 export default function createSchedule(schedule: Array<scheduleInt>) {
-    const test: Array<{week_day: number, to: string, from: string}> = [
-      { week_day: 1, to: '08h', from: '16h' },
-      { week_day: 3, to: '08h', from: '16h' },
-      { week_day: 4, to: '08h', from: '16h' }
-    ]
-
     const newTeacherSchedule: Array<{week_day: number, to: string, from: string, label: string}> = [
       { week_day: 0, to: '', from: '', label: 'Domingo' },
       { week_day: 1, to: '', from: '', label: 'Segunda' },

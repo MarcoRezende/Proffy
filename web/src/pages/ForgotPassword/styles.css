@@ -1,0 +1,25 @@
+.forgot-password-input-block {
+  margin: 1.6rem 0;
+}
+
+.forgot-password-input-block input {
+  border: 0;
+  padding: 1.6rem;
+  background: var(--color-input-background);
+  border-radius: .8rem;
+  border: 1px solid var(--color-line-in-white);
+}
+
+.forgot-password-input-block input:focus {
+  z-index: 999;
+}
+
+.forgot-password-input-block input {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.forgot-password-input-block input[name="password"] {
+  padding-right: 50px;
+}

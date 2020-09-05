@@ -100,7 +100,7 @@ function TeacherForm() {
                   <legend>Seus Dados</legend>
 
                   <div className="user-info">
-                    <img className="avatar" src="https://www.famousbirthdays.com/headshots/angelskimi-1.jpg"/>
+                    <img className="avatar" src="https://www.famousbirthdays.com/headshots/angelskimi-1.jpg" alt="Avatar"/>
 
                     <div className="name-and-subject">
                       <span id="name">Angels Kimi</span>

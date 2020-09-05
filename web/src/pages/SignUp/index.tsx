@@ -1,7 +1,7 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
 
-import backIcon from '../../assets/images/icons/back.svg';
-import logoIcon from '../../assets/images/logo.svg';
+import Log from '../../components/Log'
+
 import { ReactComponent as EyeVisibleIcon } from '../../assets/images/icons/visibility.svg';
 import { ReactComponent as EyeInvisibleIcon } from '../../assets/images/icons/invisible.svg';
 
@@ -9,53 +9,69 @@ import api from '../../services/api'
 
 import './styles.css';
 
-function TeacherList() {
+function SignUp() {
+  const [name, setName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   const [togglePasswordVisibility, setTogglePasswordVisibility] = useState(false);
+  const [sendStatus, setSendStatus] = useState(false)
+
+  function handleSendStatus() {
+    name.length &&
+    lastName.length &&
+    email.length &&
+    password.length
+    ? setSendStatus(true) : setSendStatus(false);
+  }
 
   function handlerTogglePasswordVisibility() {
     setTogglePasswordVisibility(!togglePasswordVisibility);
   }
 
-  return (
-    <div id="sign-up-page" className="container">
-      <main className="sign-up-inner">
-        <div className="wrapper">
-          <a href="/"><img src={backIcon} /></a>
-          <form className="sign-up-form">
-            <div className="fieldset">
-              <legend>
-                <p>Cadastro</p>
-                <p>Preencha os dados abaixo para <br/> começar.</p>
-              </legend>
+  function handleSubmit() {
 
-              <div className="sign-up-input-block">
-                <input type="text" placeholder="Nome" name="name" />
-                <input type="text" placeholder="Sobrenome" name="last-name" />
-                <input type="email" placeholder="E-mail" name="email" />
-                <span className="password-input">
-                  <input
-                    type={ togglePasswordVisibility ? 'text' : 'password' }
-                    placeholder="Senha"
-                    name="password"
-                  />
-                  <span className="input-icon" onClick={handlerTogglePasswordVisibility}>
-                    { togglePasswordVisibility ? <EyeInvisibleIcon/> : <EyeVisibleIcon/> }
-                  </span>
-                </span>
-              </div>
-            </div>
-            <button type="submit">Concluir cadastro</button>
-          </form>
-        </div>
-        <div className="sign-up-hero">
-          <div>
-            <img src={logoIcon} />
-            <p>Sua plataforma de <br /> estudos online.</p>
-          </div>
-        </div>
-      </main>
-    </div>
+  }
+
+  return (
+    <Log
+      handleSubmit={handleSubmit}
+      title="Cadastro"
+      paragraphs={["Preencha os dados abaixo para", "começar."]}
+      btnText="Concluir cadastro"
+      sendStatus={sendStatus}
+    >
+      <div className="sign-up-input-block">
+        <input type="text"
+          placeholder="Nome"
+          name="name"
+          onChange={(e) => { setName(e.target.value); handleSendStatus() }}
+        />
+        <input type="text"
+          placeholder="Sobrenome"
+          name="last-name"
+          onChange={(e) => { setLastName(e.target.value); handleSendStatus() }}
+        />
+        <input type="email"
+          placeholder="E-mail"
+          name="email"
+          onChange={(e) => { setEmail(e.target.value); handleSendStatus() }}
+        />
+        <span className="password-input">
+          <input
+            type={ togglePasswordVisibility ? 'text' : 'password' }
+            placeholder="Senha"
+            name="password"
+            onChange={(e) => { setPassword(e.target.value); handleSendStatus() }}
+          />
+          <span className="input-icon" onClick={handlerTogglePasswordVisibility}>
+            { togglePasswordVisibility ? <EyeInvisibleIcon/> : <EyeVisibleIcon/> }
+          </span>
+        </span>
+      </div>
+    </Log>
   )
 }
 
-export default TeacherList;
+export default SignUp;
